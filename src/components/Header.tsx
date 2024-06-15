@@ -1,6 +1,5 @@
 import logo from "../assets/FIND FLIX-logo/vector/default-monochrome.svg";
 import bigLogo from "../assets/FIND FLIX-logo/vector/default-monochrome-white.svg";
-import { useState } from "react";
 
 interface headerProp {
   query: string;
