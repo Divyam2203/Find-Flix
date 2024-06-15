@@ -1,11 +1,15 @@
 import MovieCard from "./MovieCard";
 
+interface moviesData{
+
+}
+
 const MovieList = ({ movies }: any) => {
-  //console.log()
+  //const {Search} = movies;
   return (
-    <div className=" flex-col flex">
+    <div className="w-10/12 mx-auto my-12 flex flex-wrap justify-between bg-navi">
       {movies.map((singleMovieData: any) => (
-        <MovieCard movie={singleMovieData} />
+        <MovieCard key={singleMovieData.imdbID} movie={singleMovieData} />
       ))}
     </div>
   );

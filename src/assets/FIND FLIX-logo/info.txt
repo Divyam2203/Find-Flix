@@ -1,0 +1,14 @@
+
+Hope you enjoy your new logo, here are the people that
+made your beautiful logo happen :)
+font name: Renner-Light
+font link: http://indestructibletype.com/BuyRenner.html
+font author: indestructible type*
+font author site: http://indestructibletype.com/Home.html
+
+
+icon designer: P.J. Onori
+icon designer link: /somerandomdude
+        
+{"bg":"#E1F3FC","icon-gradient-0":"#0076DD","icon-gradient-1":"#00CDE9","font":"#012B3D","slogan":"#153f51"}
+      

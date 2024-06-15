@@ -1,8 +1,16 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import MovieList from "./components/MovieList";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
 
 //const axios = require('axios'); // legacy way
+
+interface movieDataParam {
+  Search: () => [];
+  totalResults: number;
+  response: boolean;
+}
 
 function App() {
   const moviess = [
@@ -30,28 +38,97 @@ function App() {
       Poster:
         "https://m.media-amazon.com/images/M/MV5BNWFlYWY2YjYtNjdhNi00MzVlLTg2MTMtMWExNzg4NmM5NmEzXkEyXkFqcGdeQXVyMDk5Mzc5MQ@@._V1_SX300.jpg",
     },
+    {
+      Title: "Godfather of Harlem",
+      Year: "2019–",
+      imdbID: "tt8080122",
+      Type: "series",
+      Poster:
+        "https://m.media-amazon.com/images/M/MV5BNDExMTNkZDUtMzU5NC00ZWUwLTlkOTUtNzU0ZmYxMzk5YjEwXkEyXkFqcGdeQXVyMDA4NzMyOA@@._V1_SX300.jpg",
+    },
+    {
+      Title: "The Godfather Trilogy: 1901-1980",
+      Year: "1992",
+      imdbID: "tt0150742",
+      Type: "movie",
+      Poster:
+        "https://m.media-amazon.com/images/M/MV5BMjk5ODZjYmMtYTJjNy00MTU2LWI5OTYtYTg5YjFlMDk3ZjI0XkEyXkFqcGdeQXVyODAyNDE3Mw@@._V1_SX300.jpg",
+    },
+    {
+      Title: "Godfather",
+      Year: "2022",
+      imdbID: "tt13130308",
+      Type: "movie",
+      Poster:
+        "https://m.media-amazon.com/images/M/MV5BYmIxMjM2N2MtYjJiMC00NDNmLWExMDEtZjYyYjIyNjMzMDEwXkEyXkFqcGdeQXVyOTI3MzI4MzA@._V1_SX300.jpg",
+    },
+    {
+      Title: "The Godfather Saga",
+      Year: "1977",
+      imdbID: "tt0809488",
+      Type: "series",
+      Poster:
+        "https://m.media-amazon.com/images/M/MV5BNzk3NmZmMjgtMjA4NS00MjdkLTlkZmMtZGFkMDAyNWU4NDdlXkEyXkFqcGdeQXVyODAyNDE3Mw@@._V1_SX300.jpg",
+    },
+    {
+      Title: "Miracles: The Canton Godfather",
+      Year: "1989",
+      imdbID: "tt0098019",
+      Type: "movie",
+      Poster:
+        "https://m.media-amazon.com/images/M/MV5BYThlMDRmNDYtNDU3YS00YmRkLTg0MWYtODIzZjM3MzViZDU3XkEyXkFqcGdeQXVyNzI1NzMxNzM@._V1_SX300.jpg",
+    },
+    {
+      Title: "Godfather",
+      Year: "1991",
+      imdbID: "tt0353496",
+      Type: "movie",
+      Poster:
+        "https://m.media-amazon.com/images/M/MV5BYjI2YmJhMTUtYjEzYS00N2VmLTlmMzMtZGQ1MjZhNmY0ODdiXkEyXkFqcGdeQXVyMTEzNzg0Mjkx._V1_SX300.jpg",
+    },
+    {
+      Title: "The Godfather",
+      Year: "2006",
+      imdbID: "tt0442674",
+      Type: "game",
+      Poster:
+        "https://m.media-amazon.com/images/M/MV5BMTQyNTE4NzMzNF5BMl5BanBnXkFtZTgwMDgzNTY3MDE@._V1_SX300.jpg",
+    },
   ];
 
-  const [movieData, setMovieData] = useState([]);
+  const [movieData, setMovieData] = useState({
+    Search: [],
+    totalResults: 0,
+    response: false,
+  });
 
-  // const getMovies = async () => {
-  //   try {
-  //     const response = await axios.get(
-  //       "http://www.omdbapi.com/?apikey=41022a2&s=godfather"
-  //     );
-  //     console.log(response.data);
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
+  const [query, setQuery] = useState("marvel");
 
-  // useEffect(() => {
-  //   //getMovies();
-  // }, []);
+  const getMovies = async (changedQuery: string) => {
+    try {
+      const response = await axios.get(
+        `http://www.omdbapi.com/?apikey=41022a2&s=${changedQuery}`,
+      );
+      setMovieData(response.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
+  useEffect(() => {
+    let timerOut = setTimeout(() => {
+      getMovies(query);
+    }, 3000);
+    return () => clearTimeout(timerOut);
+  }, [query]);
+
+  const { Search} = movieData;
+  
   return (
     <>
-      <MovieList movies={moviess} />
+      <Header query={query} setQuery={setQuery} />
+      <MovieList movies={Search} />
+      <Footer />
     </>
   );
 }
