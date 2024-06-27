@@ -16,7 +16,7 @@ function App() {
   const getMovies = async (changedQuery: string) => {
     try {
       const response = await axios.get(
-        `http://www.omdbapi.com/?apikey=41022a2&s=${changedQuery}`,
+        `https://www.omdbapi.com/?apikey=41022a2&s=${changedQuery}`,
       );
       setMovieData(response.data);
     } catch (err) {
