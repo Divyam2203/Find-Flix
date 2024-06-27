@@ -8,7 +8,7 @@ function App() {
   const [movieData, setMovieData] = useState({
     Search: [],
     totalResults: 0,
-    response: false,
+    response: false, 
   });
 
   const [query, setQuery] = useState("marvel");
