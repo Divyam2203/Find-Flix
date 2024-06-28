@@ -1,5 +1,5 @@
-import logo from "../assets/FIND FLIX-logo/vector/default-monochrome.svg";
 import bigLogo from "../assets/FIND FLIX-logo/vector/default-monochrome-white.svg";
+import heroImage from "../assets/myke-simon.jpg";
 
 interface headerProp {
   query: string;
@@ -7,14 +7,14 @@ interface headerProp {
 }
 
 const Header = ({ query, setQuery }: headerProp) => {
-
   return (
-    <div>
-      <div className="bg-grey flex justify-between">
-        <img src={logo} alt="" className="mx-8 size-32 h-16" />
-        <button className="mx-8">dark</button>
-      </div>
-      <div className="bg-hero-image flex flex-col justify-center bg-slate-600 bg-cover bg-center bg-no-repeat align-middle bg-blend-multiply">
+    <div className="snap-start" id="header">
+      <div
+        style={{
+          backgroundImage: `url('${heroImage}')`,
+        }}
+        className="flex flex-col justify-center bg-slate-600 bg-cover bg-center bg-no-repeat pt-20 align-middle bg-blend-multiply"
+      >
         <img
           src={bigLogo}
           alt=""
@@ -23,12 +23,12 @@ const Header = ({ query, setQuery }: headerProp) => {
         <div className="mx-auto mb-8 w-full max-w-sm">
           <label
             htmlFor="default-email"
-            className="text-gray-900 sr-only mb-2 text-sm font-medium dark:text-white"
+            className="sr-only mb-2 text-sm font-medium text-gray-900 dark:text-white"
           ></label>
           <div className="relative">
             <div className="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-3.5 rtl:inset-x-0">
               <svg
-                className="text-gray-500 dark:text-gray-400 h-4 w-4"
+                className="h-4 w-4 text-gray-500 dark:text-gray-400"
                 aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="currentColor"
@@ -40,7 +40,7 @@ const Header = ({ query, setQuery }: headerProp) => {
             <input
               type="text"
               id="text"
-              className="text-gray-900 border-gray-300 dark:bg-gray-800 dark:border-gray-700 dark:placeholder-gray-400 block w-full rounded-lg border bg-white p-4 ps-10 text-sm focus:border-til focus:ring-til dark:text-white dark:focus:border-blue-500 dark:focus:ring-til"
+              className="block w-full rounded-lg border border-gray-300 bg-white p-4 ps-10 text-sm text-gray-900 focus:border-til focus:ring-til dark:border-gray-700 dark:bg-gray-800 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-til"
               placeholder="Find your next binge..."
               value={query}
               onChange={(e) => setQuery(e.target.value)}
