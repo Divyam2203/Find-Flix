@@ -26,7 +26,7 @@ function App() {
 
   const [query, setQuery] = useState("");
   const [selectedMovie, setSelectedMovie] = useState("");
-  const [hideDetails, setHideDetails] = useState(false);
+  //const [hideDetails, setHideDetails] = useState(false);
 
   const getMovies = async (changedQuery: string) => {
     try {
@@ -41,7 +41,7 @@ function App() {
 
   useEffect(() => {
     let timerOut = setTimeout(() => {
-      setHideDetails(true);
+      //setHideDetails(true);
       if (query !== "") {
         setSelectedMovie("")
         getMovies(query);
@@ -49,7 +49,7 @@ function App() {
       }
     }, 700);
     return () => {
-      setHideDetails(false);
+      //setHideDetails(false);
       clearTimeout(timerOut);
     };
   }, [query]);
