@@ -17,7 +17,7 @@ const MovieCard = ({ movie, onSelectedMovie }: movieCardProp) => {
             <img
               src={movie.Poster}
               alt={movie.Title}
-              className="size-fit min-h-96 max-h-96 rounded-t-xl min-w-72 max-w-72"
+              className="size-fit min-h-96 max-h-96 rounded-t-xl w-full"
             />
             <div className="mx-2 my-1 flex h-12 justify-between">
               <div className="mx-0 my-auto w-40 truncate text-left">
