@@ -58,7 +58,7 @@ function App() {
   return (
     <div className="bg-gray-100 dark:bg-gray-800 ">
       <Navbar onDarkMode={darkModeHandler} />
-      <div className="h-screen snap-y snap-mandatory scroll-p-20 overflow-y-scroll">
+      <div className="h-screen snap-y  scroll-p-20 overflow-y-scroll">
         <div className="snap-start">
           <Header query={query} setQuery={setQuery} />
         </div>
