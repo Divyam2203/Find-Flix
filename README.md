@@ -1,6 +1,6 @@
 # Find-Flix
 
-Find-Flix is a React web application that empowers you to search for movies and TV shows, providing detailed information about your chosen title. It leverages Tailwind CSS for a crisp and responsive UI and offers a convenient dark mode switch for a personalized viewing experience.
+Find-Flix is a React web application built with TypeScript that lets you search for movies and TV shows. It provides detailed information about your chosen title with a user-friendly interface styled using Tailwind CSS. The app also offers a convenient dark mode toggle for a personalized viewing experience.
 
 ## Screenshots
 <img src="public\Screenshot2.png">
@@ -13,10 +13,12 @@ Find-Flix is a React web application that empowers you to search for movies and 
 - View detailed information for the selected title, including title, release date, synopsis, poster image, genre(s), popularity (depending on OMDb API data availability), and more.
 - Seamless dark mode toggle for enhanced user comfort, especially in low-light environments.
 - Responsive design ensures optimal viewing across various devices (desktop, tablet, mobile).
+- TypeScript: Uses TypeScript for type safety and improved code maintainability
 
 ## Technologies:
 
 - React: JavaScript library for building dynamic user interfaces.
+- TypeScript: Superset of JavaScript for adding strong typing and improving code quality.
 - Tailwind CSS: Utility-first CSS framework for rapid and efficient styling.
 - OMDb API: Popular API for accessing movie and TV show data (requires an API key).
 
