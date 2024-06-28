@@ -58,16 +58,16 @@ function App() {
   return (
     <div className="bg-gray-100 dark:bg-gray-800 ">
       <Navbar onDarkMode={darkModeHandler} />
-      <div className="h-screen snap-y  scroll-p-20 overflow-y-scroll">
-        <div className="snap-start">
+      <div className="overflow-y-scroll">
+        <div className="">
           <Header query={query} setQuery={setQuery} />
         </div>
-        <div className="snap-start">
+        <div className="">
           {selectedMovie ? (
             <Details key={selectedMovie} selectedMovie={selectedMovie} />
           ) : null}
         </div>
-        <div className="snap-start">
+        <div className="">
           {Response==="True" ? <MovieList movies={Search} onSelectedMovie={handleSelectedMovie} /> : <Loading />}
           
           <Footer />
