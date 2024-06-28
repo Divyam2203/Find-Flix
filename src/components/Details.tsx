@@ -28,7 +28,7 @@ const Details = ({ selectedMovie }: any) => {
         `https://www.omdbapi.com/?apikey=41022a2&i=${selectedMovie}&plot=full`,
       );
       setMovieDetails(response.data);
-      console.log(movieDetails);
+      //console.log(movieDetails);
     } catch (err) {
       console.log(err);
     }

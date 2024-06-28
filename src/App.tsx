@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import MovieList from "./components/MovieList";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
@@ -9,6 +9,8 @@ import Navbar from "./components/Navbar.tsx";
 import Loading from "./components/Loading.tsx";
 
 function App() {
+  const viewRef = useRef<HTMLDivElement | null>(null);
+
   const [dark, setDark] = useState(false);
 
   const darkModeHandler = () => {
@@ -24,7 +26,7 @@ function App() {
 
   const [query, setQuery] = useState("");
   const [selectedMovie, setSelectedMovie] = useState("");
-  
+  const [hideDetails, setHideDetails] = useState(false);
 
   const getMovies = async (changedQuery: string) => {
     try {
@@ -39,11 +41,17 @@ function App() {
 
   useEffect(() => {
     let timerOut = setTimeout(() => {
+      setHideDetails(true);
       if (query !== "") {
+        setSelectedMovie("")
         getMovies(query);
+        //viewRef.current?.scrollIntoView();
       }
     }, 700);
-    return () => clearTimeout(timerOut);
+    return () => {
+      setHideDetails(false);
+      clearTimeout(timerOut);
+    };
   }, [query]);
 
   const { Search, Response } = query === "" ? DATA : movieData;
@@ -52,11 +60,11 @@ function App() {
 
   function handleSelectedMovie(movieId: string) {
     setSelectedMovie(movieId);
-    console.log(movieId);
+    //console.log(movieId);
   }
 
   return (
-    <div className="bg-gray-100 dark:bg-gray-800 ">
+    <div className="bg-gray-100 dark:bg-gray-800">
       <Navbar onDarkMode={darkModeHandler} />
       <div className="overflow-y-scroll">
         <div className="">
@@ -67,9 +75,13 @@ function App() {
             <Details key={selectedMovie} selectedMovie={selectedMovie} />
           ) : null}
         </div>
-        <div className="">
-          {Response==="True" ? <MovieList movies={Search} onSelectedMovie={handleSelectedMovie} /> : <Loading />}
-          
+        <div className="" ref={viewRef}>
+          {Response === "True" ? (
+            <MovieList movies={Search} onSelectedMovie={handleSelectedMovie} />
+          ) : (
+            <Loading />
+          )}
+
           <Footer />
         </div>
       </div>
